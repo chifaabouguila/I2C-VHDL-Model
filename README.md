@@ -29,7 +29,16 @@ I2C Bus is easy to use, most significant features are:
 ![528_Fig_3](https://user-images.githubusercontent.com/35849581/70900258-1fdf3780-2001-11ea-92c5-db26d3b7b671.jpg)  
 Prior to any transmission, a start condition needs to be issued on the bus. The start condition acts as a signal to all connected ICs that something is about to be transmitted on the bus. It is initiated by the master by sending a high-to-low transition on the SDA line whilst SCL is high as shown below  
 ![Z3F_Fig_2](https://user-images.githubusercontent.com/35849581/70900898-6aad7f00-2002-11ea-9c9c-6cc36bed86d1.jpg)  
-After the start condition, the 7-bit slave address followed by the eighth bit is sent on the SDA line by the master, where a ‘0’ on bit indicates a write operation from the master to the slave (master is the transmitter and slave is the receiver) and a ‘1’ indicates a read operation from the slave to the master (master is the receiver and slave is the transmitter). The MSB of the address bits is sent first followed by the other bits. The value on the SDA line can be changed when SCL line is low.  
-The slave device whose address is the same as the address being sent out by the master responds with an acknowledgement bit on the SDA line by pulling the SDA line low during the ninth clock cycle of the SCL line. After that, the transmission takes place between the master and the slave. Each byte on the SDA line for transmission is 8 bits long with the MSB being sent first. Also, the SDA line must not be changed when SCL line is high, except for the start and the stop conditions. Any number of bytes can be transmitted, however each byte is to be followed by an acknowledgement bit.  
+After the start condition, the 7-bit slave address followed by the eighth bit is sent on the SDA line by the master, where a ‘0’ on bit indicates a write operation from the master to the slave (master is the transmitter and slave is the receiver) and a ‘1’ indicates a read operation from the slave to the master (master is the receiver and slave is the transmitter).  
+The MSB of the address bits is sent first followed by the other bits. The value on the SDA line can be changed when SCL line is low.    
+The slave device whose address is the same as the address being sent out by the master responds with an acknowledgement bit on the SDA line by pulling the SDA line low during the ninth clock cycle of the SCL line.  
+After that, the transmission takes place between the master and the slave. Each byte on the SDA line for transmission is 8 bits long with the MSB being sent first.  
+Also, the SDA line must not be changed when SCL line is high, except for the start and the stop conditions.  
+Any number of bytes can be transmitted, however each byte is to be followed by an acknowledgement bit.   
+## I²C master controller implementation
+In this section, the implementation of the I²C master controller using an FPGA is discussed:  
+I²C master controller in an FPGA will be implemented using a finite state machine (FSM).  
+ FSMs can be classified as Mealy FSM and Moore FSM. In a Mealy FSM, the output depends on the current input and the current state  whereas in a Moore FSM, the output depends on the current state only.  
+ 
 
 
