@@ -27,5 +27,6 @@ I2C Bus is easy to use, most significant features are:
  4. Data transmission between the master and the slave device
  5. Stop condition  
 ![528_Fig_3](https://user-images.githubusercontent.com/35849581/70900258-1fdf3780-2001-11ea-92c5-db26d3b7b671.jpg)  
-Prior to any transmission, a start condition needs to be issued on the bus. The start condition acts as a signal to all connected ICs that something is about to be transmitted on the bus. It is initiated by the master by sending a high-to-low transition on the SDA line whilst SCL is high  
+Prior to any transmission, a start condition needs to be issued on the bus. The start condition acts as a signal to all connected ICs that something is about to be transmitted on the bus. It is initiated by the master by sending a high-to-low transition on the SDA line whilst SCL is high as shown below  
+![Z3F_Fig_2](https://user-images.githubusercontent.com/35849581/70900898-6aad7f00-2002-11ea-9c9c-6cc36bed86d1.jpg)
 
