@@ -20,12 +20,22 @@ I2C Bus is easy to use, most significant features are:
   * Fast Mode Plus 1Mhz  
   * Ultra Fast Mode 5Mhz ( is no real I2C).  
  ## Establishing Connection
- The I²C protocol comprises a set of conditions to establish communication between the devices. These include:
- 1. Start condition
- 2. Sending of the slave address along with read/write information by the master
- 3. Acknowledgement by the slave device
- 4. Data transmission between the master and the slave device
- 5. Stop condition  
+ Write operation:  
+1. Initialize I2C.
+2. Generate START condition.
+3. Send Slave device write address (SLA+W) and check for acknowledgement.
+4. Write memory location address for memory devices to which we want to write.
+5. Write data till last byte.
+6. Generate STOP condition.
+Read operation:  
+1. Initialize I2C.
+2. Generate START condition.
+3. Write device Write address (SLA+W) and check for acknowledgement.
+4. Write memory location address for memory devices.
+5. Generate REPEATED START condition with (SLA +R).
+6. Read data and return acknowledgement.
+7. Return Not acknowledgement for last byte.
+8. Generate STOP condition.  
 ![528_Fig_3](https://user-images.githubusercontent.com/35849581/70900258-1fdf3780-2001-11ea-92c5-db26d3b7b671.jpg)  
 Prior to any transmission, a start condition needs to be issued on the bus. The start condition acts as a signal to all connected ICs that something is about to be transmitted on the bus. It is initiated by the master by sending a high-to-low transition on the SDA line whilst SCL is high as shown below  
 ![Z3F_Fig_2](https://user-images.githubusercontent.com/35849581/70900898-6aad7f00-2002-11ea-9c9c-6cc36bed86d1.jpg)  
