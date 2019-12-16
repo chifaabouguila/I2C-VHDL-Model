@@ -16,8 +16,8 @@ I2C Bus is easy to use, most significant features are:
  ## Communication Mode ( Baude Rate)  
   * Slow Mode: 100Kb/sec  
   * Fast Mode: 400Kb/sec  
-  * High Speed Mode: 3.4Mbit/sec  
-  * Fast Mode Plus 1Mhz  
+  * Fast Mode Plus 1Mhz 
+  * High Speed Mode: 3.4Mbit/sec   
   * Ultra Fast Mode 5Mhz ( is no real I2C).  
  ## Establishing Connection
  Write operation:  
