@@ -45,6 +45,17 @@ The slave device whose address is the same as the address being sent out by the 
 After that, the transmission takes place between the master and the slave. Each byte on the SDA line for transmission is 8 bits long with the MSB being sent first.  
 Also, the SDA line must not be changed when SCL line is high, except for the start and the stop conditions.  
 Any number of bytes can be transmitted, however each byte is to be followed by an acknowledgement bit.   
+## I2C Concepts
+# Arbitration  
+Several I2C multi-masters can be connected to the same I2C bus and operate concurrently.  
+By constantly monitoring SDA and SCL for start and stop conditions, they can determine whether the bus is currently idle or not.  
+If the bus is busy, masters delay pending I2C transfers until a stop condition indicates that the bus is free again.  
+
+However, it may happen that two masters start a transfer at the same time. During the transfer, the masters constantly monitor SDA and SCL. If one of them detects that SDA is low when it should actually be high, it assumes that another master is active and immediately stops its transfer.  
+This process is called arbitration.
+# Clock Stretching
+
+
 ## I²C master controller implementation
 In this section, the implementation of the I²C master controller using an FPGA is discussed:  
 I²C master controller in an FPGA will be implemented using a finite state machine (FSM).  
